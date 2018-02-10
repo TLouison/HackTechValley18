@@ -9,14 +9,88 @@ html{
 }
 
 .header {
+  position: relative;
   background-color: rgb(29,115,78);
   text-align: center;
   font-family: 'Indie Flower', cursive;
   font-size: 48px;
   width: 100%;
-  height: 10%;
+  height: 10% !important;
+  max-height: 25%;
   padding-top: 30px;
   padding-bottom: 30px;
+  display: inline-block;
+}
+
+.logo{
+  width: auto;
+  -webkit-transition: -webkit-transform .8s ease-in-out;
+  -ms-transition: -ms-transform .8s ease-in-out;
+  transition: transform .8s ease-in-out;
+}
+
+.logo:hover {
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+
+#spinning {
+		-webkit-animation: rotation 2s infinite;
+}
+
+.image{
+  text-align: center;
+}
+
+.pokeImg{
+  width: 10%;
+  height: auto;
+  padding: auto;
+  align: center;
+}
+
+.truckGif{
+  width: 300px;
+  height: auto;
+  -webkit-animation: slide 3s infinite linear;
+}
+
+a:active, a:focus {
+  outline: 0;
+  border: none;
+  -moz-outline-style: none
+}
+
+marquee{
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.road{
+    background-image: url("road.png");
+    background-position: center;
+    background-repeat: repeat-x;
+    height: auto;
+    width:100%;
+    padding-top: 2px;
+}
+
+@-webkit-keyframes slide{
+    from {
+      left: -50px;
+    }
+    to{
+      left: 110%;
+    }
+}
+
+@-webkit-keyframes rotation {
+		from {
+				-webkit-transform: rotate(0deg);
+		}
+		to {
+				-webkit-transform: rotate(359deg);
+		}
 }
 
 h1{
