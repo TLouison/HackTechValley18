@@ -1,10 +1,21 @@
 var gameArea = null;
 var map = null;
-var deltaX = 0;
-var deltaY = 0;
+var left = false;
+var right = false;
+var up = false;
+var down = false;
 
 function update()
 {
+	var deltaX = 0;
+	var deltaY = 0;
+	
+	if(left) deltaX = -10;
+	else if(right) deltaX = 10;
+	
+	if(down) deltaY = 10;
+	else if(up) deltaY = -10;
+	
 	if(deltaX != 0 || deltaY != 0)
 		map.panBy(deltaX, deltaY);
 }
@@ -43,16 +54,16 @@ function initMap()
 		switch(event.key)
 		{
 			case 'ArrowUp':
-				deltaY = -10;
+				up = true;
 				break;
 			case 'ArrowDown':
-				deltaY = 10;
+				down = true;
 				break;
 			case 'ArrowLeft':
-				deltaX = -10;
+				left = true;
 				break;
 			case 'ArrowRight':
-				deltaX = 10;
+				right = true;
 				break;
 		}
 	});
@@ -61,12 +72,16 @@ function initMap()
 		switch(event.key)
 		{
 			case 'ArrowUp':
+				up = false;
+				break;
 			case 'ArrowDown':
-				deltaY = 0;
+				down = false;
 				break;
 			case 'ArrowLeft':
+				left = false;
+				break;
 			case 'ArrowRight':
-				deltaX = 0;
+				right = false;
 				break;
 		}
 	});
