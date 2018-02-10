@@ -8,7 +8,7 @@ function wordPicker(){
 
    var miracle = Math.floor(Math.random() * 50) + 1;
    if (miracle == 25){
-     document.write("TRUCK")
+     document.getElementById('randomWords').innerHTML = "TRUCK";
    }
    else{
      for (i=0; i<2; i++){
