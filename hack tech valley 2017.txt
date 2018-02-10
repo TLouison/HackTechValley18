@@ -1,4 +1,4 @@
-Schenectady Government 1: Hey, so we just got a budget approved for GPS systems in our police cars, to improve our police network.But there was a communication error, and now all of our dump trucks have GPS capability. I have absolutely no idea what to do with this shit.
+Schenectady Government 1: Hey, somehow our budget this year allowed for GPS's in our dump trucks, and i have absolutely no idea what to do with this shit.
 Schenectady Government 2: Hmmm, maybe the community college has someone with an idea that we can justify this purchase to our bosses.
 Schenectady Government 1: But there's a problem here. Our entire department only has a budget of $5000.
 Schenectady Community College: I love this idea. One minor issue, we don't have anyone who wants to do anything like this.
@@ -11,3 +11,5 @@ Schenectady Government 1: But does anyone really want to create a project solely
 Schenectady Community College: Maybe if we don't tell anyone beforehand, it'll be too inconvenient to leave, and they'll have nothing better to do.
 Transfinder: You know, this is a pretty great idea. So how many times can you mention transfinder in this competition?
 Uptime: You know, we're doing market research, and if we could keep people energetic during literally the least interesting task possible, clearly our product has some merit.
+Transfider: Thats a fantastic idea, we'll make sure our employees have no clue what hackathons are but are really hyped up off your "supplement", so they can get the entire room to scream Transfinder at once.
+Uptime: Thats a great idea, but can you be really sure to plug how great a name Uptime is? We really need confirmation that the kids think were the bee's knees.
