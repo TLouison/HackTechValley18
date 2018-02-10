@@ -17,6 +17,58 @@ html{
   height: 10%;
   padding-top: 30px;
   padding-bottom: 30px;
+  display: inline-block;
+}
+
+.logo{
+  width: 80%;
+  -webkit-transition: -webkit-transform .8s ease-in-out;
+  -ms-transition: -ms-transform .8s ease-in-out;
+  transition: transform .8s ease-in-out;
+}
+
+.logo:hover {
+  -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+
+#spinning {
+		-webkit-animation: rotation 2s infinite;
+}
+
+.image{
+  text-align: center;
+}
+
+.pokeImg{
+  width: 10%;
+  height: auto;
+  padding: auto;
+  align: center;
+}
+
+.truckGif{
+  width: 300px;
+  height: auto;
+  -webkit-animation: slide 3s infinite linear;
+}
+
+@-webkit-keyframes slide{
+    from {
+      left: -50px;
+    }
+    to{
+      left: 110%;
+    }
+}
+
+@-webkit-keyframes rotation {
+		from {
+				-webkit-transform: rotate(0deg);
+		}
+		to {
+				-webkit-transform: rotate(359deg);
+		}
 }
 
 h1{
