@@ -1,0 +1,22 @@
+<script>
+
+var data = "username=ic.admin&password=admin";
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+    console.log(this.responseText);
+	alert(this.responseText);
+  }
+});
+
+xhr.open("GET", "https://890407d7-e617-4d70-985f-01792d693387.predix-uaa.run.aws-usw02-pr.ice.predix.io/oauth/token?grant_type=client_credentials");
+xhr.setRequestHeader("Authorization", "Basic aGFja2F0aG9uOkBoYWNrYXRob24=");
+xhr.setRequestHeader("Cache-Control", "no-cache");
+xhr.setRequestHeader("Postman-Token", "f8b2cd84-0361-8dfd-589d-d59793388faa");
+
+xhr.send(data);
+
+</script>
