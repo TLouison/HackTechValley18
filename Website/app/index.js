@@ -64,7 +64,7 @@ function update_locations()
 		}
 		else
 		{
-			var url = "../../truck_boy/pixel-art-garbage-truck_1959078.gif"
+			var url = "../../truck_boy/small-truck.gif"
 			marker = new google.maps.Marker({
 				position: pos,
 				map: map,
@@ -143,7 +143,7 @@ function initMap()
 		center: {lat: 42.815102, lng: -73.950355},
 		zoom: 17,
 		disableDefaultUI: true,
-		zoomControl: false,
+		zoomControl: true,
 		gestureHandling: 'none',
 		mapTypeControl: false,	
 		scaleControl: false,
