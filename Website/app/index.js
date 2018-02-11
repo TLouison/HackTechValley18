@@ -131,7 +131,7 @@ function checkCollide(x,y){
 	playerPos[0] = Number(playerPos[0]);
 	playerPos[1] = Number(playerPos[1]);
 
-	if (distanceCheck(playerPos[0], playerPos[1], x, y) < .0015){
+	if (distanceCheck(playerPos[0], playerPos[1], x, y) < 1){
 		alert("COLLISION");
 		console.log("COLLISION");
 	}
