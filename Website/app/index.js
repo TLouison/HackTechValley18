@@ -95,13 +95,10 @@ function character(width, height, color, type) {
 	  ctx = gameArea.context;
 
 		if (left || down) {
-			console.log("left image")
 			this.image.src = "../../truck_boy/pixel_boy_walk_left.gif";
 		} else if (right || up) {
-			console.log("right image")
 			this.image.src = "../../truck_boy/pixel_boy_walk.gif";
 		} else {
-			console.log("standing")
 			this.image.src = "../../truck_boy/pixel_boy_idle.gif";
 		} 
 		if (type == "image") {
@@ -185,9 +182,9 @@ function initMap()
 				break;
 			case 'ArrowRight':
 				right = true;
-				break;
-			case 'Space':
+				console.log("right hit active true", active)
 				active = true;
+				break;
 
 		}
 	});
@@ -206,9 +203,8 @@ function initMap()
 				break;
 			case 'ArrowRight':
 				right = false;
+				active = false;
 				break;
-			case 'Space':
-				active = true;
 		}
 	});
 	read_file();

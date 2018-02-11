@@ -5,11 +5,12 @@
 		<!-- API KEY: AIzaSyBl3pWs1kD4YUBJPmpMFOdeu90EHthzdVY -->
 			
 		<script src="index.js"></script>
-		<script type='text/javascript' > 
-	  		var active = false; 
-		</script>
 		<script async defer
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl3pWs1kD4YUBJPmpMFOdeu90EHthzdVY&callback=initMap">
+		</script>
+
+		<script type='text/javascript' > 
+	  		var active = false; 
 		</script>
 
 		<meta charset="UTF-8">
@@ -48,10 +49,10 @@
   <body>
     <body>
 
-		<div v-if="active" id="map"></div>
+		<div id="map"></div>
 		<canvas id="overlay"></canvas>
 
-		 <div id="app">
+		 <div v-show="active" id="app">
 		 <!-- Begin battle scene -->
 		 <div class="battle-scene">
 		   <div class="box-top-left">
