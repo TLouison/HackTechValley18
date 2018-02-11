@@ -33,6 +33,7 @@ footer{
   position: static;
   bottom: 0;
   height: 5%;
+  border-top: 1px solid green;
 }
 
 .full{
@@ -51,6 +52,7 @@ footer{
   padding-top: 30px;
   padding-bottom: 30px;
   display: inline-block;
+  border-bottom: 1px solid green;
 }
 
 .logo{
@@ -133,6 +135,7 @@ p{
   padding: 5em;
   text-align: center;
   vertical-align: middle;
+  border-bottom: 1px solid green; 
 }
 
 .container{
@@ -184,6 +187,7 @@ p{
 
 iframe{
   width:80%;
-  min-height: 600px;
+  min-height: 800px;
   height:80%;
+  border: 8px solid black;
 }
