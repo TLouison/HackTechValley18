@@ -54,35 +54,34 @@ function update_locations()
 				delete gameArea.markers[id];
 		}
 	}
-	
-		for(let id in trucks)
+
+	for(let id in trucks)
+	{
+		pos = trucks[id];
+		
+		if(id in gameArea.markers)
 		{
-			pos = trucks[id];
-			
-			if(id in gameArea.markers)
-			{
-				marker.setPosition(pos);
-			}
-			else
-			{
-				var url = "../../truck_boy/small-truck.gif"
-				marker = new google.maps.Marker({
-					position: pos,
-					map: map,
-					icon: {
-						url,
-						anchor: new google.maps.Point(50, 50)
-					},
-					title: "garbage"+id
-				});
-				gameArea.markers[id] = marker;
-			}
-			if (checkCollide(pos.lat,pos.lng)) {
-				deadTrucks.push(id);
-			}
+			marker.setPosition(pos);
+		}
+		else
+		{
+			var url = "../../truck_boy/small-truck.gif"
+			marker = new google.maps.Marker({
+				position: pos,
+				map: map,
+				icon: {
+					url,
+					anchor: new google.maps.Point(50, 50)
+				},
+				title: "garbage"+id
+			});
+			gameArea.markers[id] = marker;
+		}
+		if (checkCollide(pos.lat,pos.lng)) {
+			deadTrucks.push(id);
 		}
 	}
-	
+
 	current_time+= 40;
 }
 
