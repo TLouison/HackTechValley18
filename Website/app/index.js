@@ -82,6 +82,7 @@ function update_locations()
 			}
 		}
 	}
+	
 	current_time+= 40;
 }
 
