@@ -8,6 +8,7 @@ var down = false;
 var current_time = 0;
 var allText;
 var trucks = {};
+var deadTrucks = {};
 
 function read_file()
 {
@@ -48,35 +49,45 @@ function update_locations()
 	{
 		if(trucks === null || !(id in trucks))
 		{
-			marker = gameArea.markers[id];
-			marker.setMap(null);
-			delete gameArea.markers[id];
+			var drawTruck = true;
+			for let dead_id in deadTrucks {
+				if (id == dead_id) {drawTruck = false;}
+			}
+			if (drawTruck) {
+				marker = gameArea.markers[id];
+				marker.setMap(null);
+				delete gameArea.markers[id];
+			}
 		}
 	}
 	
-	for(let id in trucks)
-	{
-		pos = trucks[id];
-		
-		if(id in gameArea.markers)
+	if (drawTruck) {
+		for(let id in trucks)
 		{
-			marker.setPosition(pos);
+			pos = trucks[id];
+			
+			if(id in gameArea.markers)
+			{
+				marker.setPosition(pos);
+			}
+			else
+			{
+				var url = "../../truck_boy/small-truck.gif"
+				marker = new google.maps.Marker({
+					position: pos,
+					map: map,
+					icon: {
+						url,
+						anchor: new google.maps.Point(50, 50)
+					},
+					title: "garbage"+id
+				});
+				gameArea.markers[id] = marker;
+			}
+			if (checkCollide(pos.lat,pos.lng)) {
+				deadTrucks.push(id);
+			}
 		}
-		else
-		{
-			var url = "../../truck_boy/small-truck.gif"
-			marker = new google.maps.Marker({
-				position: pos,
-				map: map,
-				icon: {
-					url,
-					anchor: new google.maps.Point(50, 50)
-				},
-				title: "garbage"+id
-			});
-			gameArea.markers[id] = marker;
-		}
-		checkCollide(pos.lat,pos.lng);
 	}
 	current_time+= 40;
 }
@@ -133,7 +144,9 @@ function checkCollide(x,y){
 	if (distanceCheck(playerPos[0], playerPos[1], x, y) < 0.0015){
 		document.getElementById("map").style.display = "none";
 		document.getElementById("app").style.display = "block";
+		return true;
 	}
+	return false;
 }
 
 function update()
