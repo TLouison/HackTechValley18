@@ -12,6 +12,7 @@ function character(width, height, color, type) {
 	if (type == "image") {
 	  this.image = new Image();
 	  this.image.src = color;
+	  this.image.style.imageRendering = "-webkit-pixelated";
 	}
 	this.width = width;
 	this.height = height;
@@ -21,25 +22,25 @@ function character(width, height, color, type) {
 	this.update = function() {
 	  ctx = gameArea.context;
 
-	if (left || down) {
-		console.log("left image")
-		this.image.src = "../../truck_boy/pixel_boy_walk_left.gif";
-	} else if (right || up) {
-		console.log("right image")
-		this.image.src = "../../truck_boy/pixel_boy_walk.gif";
-	} else {
-		console.log("standing")
-		this.image.src = "../../truck_boy/pixel_boy_idle.gif";
-	} 
-	  if (type == "image") {
-	    ctx.drawImage(this.image, 
-	      this.x, 
-	      this.y,
-	      this.width, this.height);
-	  } else {
-	    ctx.fillStyle = color;
-	    ctx.fillRect(this.x, this.y, this.width, this.height);
-	  }
+		if (left || down) {
+			console.log("left image")
+			this.image.src = "../../truck_boy/pixel_boy_walk_left.gif";
+		} else if (right || up) {
+			console.log("right image")
+			this.image.src = "../../truck_boy/pixel_boy_walk.gif";
+		} else {
+			console.log("standing")
+			this.image.src = "../../truck_boy/pixel_boy_idle.gif";
+		} 
+		if (type == "image") {
+		    ctx.drawImage(this.image, 
+		      this.x, 
+		      this.y,
+		      this.width, this.height);
+		} else {
+		    ctx.fillStyle = color;
+		    ctx.fillRect(this.x, this.y, this.width, this.height);
+		}
 	}
 }
 
@@ -92,7 +93,7 @@ function initMap()
 	};
 	console.log("Game Area now is set to", gameArea);
 	
-	playerCharacter = new character(100, 100, "../../truck_boy/pixel_boy_idle.gif", "image");
+	playerCharacter = new character(40, 35, "../../truck_boy/pixel_boy_idle.gif", "image");
 	gameArea.start();
 	
 	console.log("character is now set to", playerCharacter);
