@@ -1,8 +1,8 @@
 var app = new Vue({
   el: '#app',
   data: {
-    userPokemonSrc: url("../../../truck_boy/battle_boy.gif"),
-    opponentPokemonSrc: url("../../../truck_boy/pixel-art-garbage-truck_1959078.gif"),
+    userPokemonSrc: "../../truck_boy/battle_boy.gif",
+    opponentPokemonSrc: "../../truck_boy/pixel-art-garbage-truck_1959078.gif",
     userPokemon: "stickboii",
     opponentPokemon: "TruCk",
     startUserHP: 100,
