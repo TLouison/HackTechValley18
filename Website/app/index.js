@@ -8,41 +8,46 @@ var down = false;
 
 
 function character(width, height, color, type) {
-  this.type = type;
-  if (type == "image") {
-    this.image = new Image();
-    this.image.src = color;
-  }
-  this.width = width;
-  this.height = height;
-  this.x = gameArea.canvas.width / 2;
-  this.y = gameArea.canvas.height / 2;
+	this.type = type;
+	if (type == "image") {
+	  this.image = new Image();
+	  this.image.src = color;
+	}
+	this.width = width;
+	this.height = height;
+	this.x = gameArea.canvas.width / 2;
+	this.y = gameArea.canvas.height / 2;
+
+
+    
+	this.update = function() {
+	  ctx = gameArea.context;
 
 	if (left || down) {
+		console.log("left image")
 		this.image.src = "../../truck_boy/pixel_boy_walk_left.gif";
 	} else if (right || up) {
+		console.log("right image")
 		this.image.src = "../../truck_boy/pixel_boy_walk.gif";
 	} else {
+		console.log("standing")
 		this.image.src = "../../truck_boy/pixel_boy_idle.gif";
 	} 
-    
-  this.update = function() {
-    ctx = gameArea.context;
-    if (type == "image") {
-      ctx.drawImage(this.image, 
-        this.x, 
-        this.y,
-        this.width, this.height);
-    } else {
-      ctx.fillStyle = color;
-      ctx.fillRect(this.x, this.y, this.width, this.height);
-    }
-
-  }
+	  if (type == "image") {
+	    ctx.drawImage(this.image, 
+	      this.x, 
+	      this.y,
+	      this.width, this.height);
+	  } else {
+	    ctx.fillStyle = color;
+	    ctx.fillRect(this.x, this.y, this.width, this.height);
+	  }
+	}
 }
 
 function update()
 {
+	gameArea.clear();
 	var deltaX = 0;
 	var deltaY = 0;
 	
