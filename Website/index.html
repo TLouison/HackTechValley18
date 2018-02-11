@@ -6,47 +6,46 @@
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <script type="text/javascript" src="truckjargon.js"></script>
+    <script type="text/javascript" src="loading.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 
 <body>
 
-  <div class="header">
+  <div class="full animate-bottom" id="wrap" >
 
-    <div class="road">
-      <marquee direction="right" scrollamount="50" scrolldelay="150ms">
-        <a href="app/index.html">
-          <img src="../truck_boy/truckboy_clickme.gif" id="audio" class="truckGif logo"/>
-        </a>
-      </marquee>
-    </div>
-
-    <h1 onclick="wordPicker();">Garbage Go<h1>
-  </div>
-
-  <div id="container">
-      <div class="content">
-        <p>Garbage trucks are pretty neat! Many have even called them </p>
-        <div style="font-size: 70px;">
-          <span id="randomWords"></span>
-        </div>
+    <div class="header">
+      <div class="road">
+        <marquee direction="right" scrollamount="50" scrolldelay="150ms">
+          <a href="app/index.html">
+            <img src="../truck_boy/truckboy_clickme.gif" class="truckGif logo"/>
+          </a>
+        </marquee>
       </div>
 
+      <h1 onclick="wordPicker()">Garbage Go<h1>
+    </div>
+
+    <div class="container">
+        <div class="content">
+          <p>Garbage trucks are pretty neat! Many have even called them </p>
+          <div style="font-size: 70px;">
+            <span id="randomWords"></span>
+          </div>
+        </div>
+
+    </div>
+
+    <script>
+      wordPicker();
+    </script>
+
+    <footer>
+      <p>Hack Tech Valley 2018</p>
+    </footer>
   </div>
 
-  <script>
-    wordPicker();
-  </script>
-
-  <audio>
-    <source src="click.mp3">
-    <source src="click.ogg">
-  </audio>
-
-<div id="sounddiv"><bgsound id="sound"></div>
 
 </body>
-
-
-
 </html>

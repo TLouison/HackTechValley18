@@ -10,6 +10,7 @@ function wordPicker(){
    if (miracle == 25){
      document.getElementById('randomWords').innerHTML = "TRUCK";
    }
+
    else{
      for (i=0; i<2; i++){
        var index = Math.floor(Math.random() * adjectiveList.length-1) + 1;
@@ -18,6 +19,8 @@ function wordPicker(){
        adjectiveList.splice(index, 1);
      }
      outputWord += nounList[Math.floor(Math.random() * nounList.length-1) + 1];
-     document.getElementById('randomWords').innerHTML = outputWord;
+     document.getElementById('randomWords').innerHTML = outputWord + ".";
    }
 }
+
+
