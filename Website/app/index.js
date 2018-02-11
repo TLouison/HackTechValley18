@@ -130,11 +130,8 @@ function checkCollide(){
 	playerPos[0] = Number(playerPos[0]);
 	playerPos[1] = Number(playerPos[1]);
 
+	console.log(trucks.length);
 	for (let id in trucks){
-		if (i % 200 == 0){
-			console.log(trucks.length);
-			console.log(trucks[id][0])
-		}
 		if (distanceCheck(playerPos[0], playerPos[1], trucks[id][0], trucks[id][1]) < .0015){
 			alert("COLLISION");
 		}
