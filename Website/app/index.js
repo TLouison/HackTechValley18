@@ -1,4 +1,5 @@
 var gameArea = null;
+var playerCharacter = null;
 var map = null;
 var left = false;
 var right = false;
@@ -18,6 +19,8 @@ function update()
 	
 	if(deltaX != 0 || deltaY != 0)
 		map.panBy(deltaX, deltaY);
+
+	playerCharacter.update();
 }
 
 function initMap()
@@ -48,6 +51,7 @@ function initMap()
 		}
 	};
 	
+	playerCharacter = new character(100, 100, "../../truck_boy/truckboy_clickme.gif", "image");
 	gameArea.start();
 	
 	document.addEventListener('keydown', (event) => {
@@ -86,4 +90,35 @@ function initMap()
 		}
 	});
 		
+}
+
+function character(width, height, color, type) {
+  this.type = type;
+  if (type == "image") {
+    this.image = new Image();
+    this.image.src = color;
+  }
+  this.width = width;
+  this.height = height;
+  this.x = gameArea.canvas.width / 2;
+  this.y = gameArea.canvas.width / 2; 
+  this.update = function() {
+    ctx = gameArea.context;
+    if (type == "image") {
+      ctx.drawImage(this.image, 
+        this.x, 
+        this.y,
+        this.width, this.height);
+    } else {
+      ctx.fillStyle = color;
+      ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
+    if (left || down) {
+		this.image.src = "../../truck_boy/pixel_boy_walk_left.gif";
+    } else if (right || up) {
+    	this.image.src = "../../truck_boy/pixel_boy_walk.gif";
+    } else {
+    	this.image.src = "../../truck_boy/pixel_boy_idle.gif";
+    }
+  }
 }
