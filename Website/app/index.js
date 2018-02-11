@@ -39,6 +39,8 @@ function initMap()
 		rotateControl: true,
 		fullscreenControl: true
 	});
+
+	
 	
 	gameArea = {
 		canvas : overlay,
