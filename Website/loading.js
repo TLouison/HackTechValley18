@@ -4,6 +4,6 @@ function timedelay(){
 
 function showPage() {
   $("#loader").style.display = "none";
-  $("#wrap").style.height = 100%;
-  $("#wrap").style.opacity = 1;
+  $("#wrap").style.height = "100%";
+  $("#wrap").style.opacity = "1";
 }	

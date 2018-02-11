@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'pix PixelFJVerdana12pt';
-    src: url('pixPixelFJVerdana12pt.woff2') format('woff2'),
-        url('pixPixelFJVerdana12pt.woff') format('woff');
+    src: url('fonts/pixPixelFJVerdana12pt.woff2') format('woff2'),
+        url('fonts/pixPixelFJVerdana12pt.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -135,7 +135,7 @@ p{
   vertical-align: middle;
 }
 
-#container{
+.container{
   height: 25%;
   justify-content: center;
   align-content: center;
