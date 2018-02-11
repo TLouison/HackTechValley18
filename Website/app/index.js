@@ -12,7 +12,6 @@ function character(width, height, color, type) {
 	if (type == "image") {
 	  this.image = new Image();
 	  this.image.src = color;
-	  this.image.style.imageRendering = "-webkit-pixelated";
 	}
 	this.width = width;
 	this.height = height;
@@ -93,7 +92,7 @@ function initMap()
 	};
 	console.log("Game Area now is set to", gameArea);
 	
-	playerCharacter = new character(40, 35, "../../truck_boy/pixel_boy_idle.gif", "image");
+	playerCharacter = new character(27, 35, "../../truck_boy/pixel_boy_idle.gif", "image");
 	gameArea.start();
 	
 	console.log("character is now set to", playerCharacter);
