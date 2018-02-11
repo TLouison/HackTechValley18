@@ -27,7 +27,6 @@ function update_locations()
 {
 	
 	//Moved trucks from local to global variable for use in collision function
-	trucks = {};
 	
 	var all_event_strings = allText.split("\n");
 	console.log(all_event_strings[0]);
