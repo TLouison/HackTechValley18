@@ -22,11 +22,13 @@ var app = new Vue({
   },
   methods:{
     killTruck: function() {
-          this.battleText = this.userPokemon + " killed " + this.opponentPokemon
-          setTimeout(function(){  
-            document.getElementById("map").style.display = "block";
-            document.getElementById("app").style.display = "none";
-            document.getElementById("app").battleText = "What will your boi do?" }, 2000);
+          setTimeout(() => {
+            this.battleText = this.userPokemon + " killed " + this.opponentPokemon
+          }, 2000);  
+          this.battleText = "What will your boi do?";
+          document.getElementById("map").style.display = "block";
+          document.getElementById("app").style.display = "none";
+          
                  
     }
   }
