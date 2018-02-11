@@ -7,6 +7,7 @@ var up = false;
 var down = false;
 var current_time = 0;
 var allText;
+var trucks = {};
 
 function read_file()
 {
@@ -25,7 +26,8 @@ function read_file()
 function update_locations()
 {
 	
-	var trucks = {};
+	//Moved trucks from local to global variable for use in collision function
+	trucks = {};
 	
 	var all_event_strings = allText.split("\n");
 	console.log(all_event_strings[0]);
@@ -116,6 +118,25 @@ function character(width, height, color, type) {
 	}
 }
 
+function distanceCheck(x1,y1,x2,y2){
+	var deltaX = Math.abs(x1-x2);
+	var deltaY = Math.abs(y1-y2);
+	var dist = Math.sqrt(Math.pow(deltaX,2) + Math.pow(deltaY,2));
+	return (dist);
+}
+
+function checkCollide(){
+	var playerPos = map.getCenter().toUrlValue().split(",");
+	playerPos[0] = Number(playerPos[0]);
+	playerPos[1] = Number(playerPos[1]);
+
+	for (i = 0; i < trucks.length; i++){
+		if (distanceCheck(playerPos[0], playerPos[1], trucks[i][0], trucks[i][1]) < .0015){
+			alert("COLLISION");
+		}
+	}
+}
+
 function update()
 {
 	gameArea.clear();
@@ -131,6 +152,7 @@ function update()
 	if(deltaX != 0 || deltaY != 0)
 		map.panBy(deltaX, deltaY);
 
+	checkCollide();
 	playerCharacter.update();
 }
 
