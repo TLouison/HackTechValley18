@@ -49,19 +49,12 @@ function update_locations()
 	{
 		if(trucks === null || !(id in trucks))
 		{
-			var drawTruck = true;
-			for let dead_id in deadTrucks {
-				if (id == dead_id) {drawTruck = false;}
-			}
-			if (drawTruck) {
 				marker = gameArea.markers[id];
 				marker.setMap(null);
 				delete gameArea.markers[id];
-			}
 		}
 	}
 	
-	if (drawTruck) {
 		for(let id in trucks)
 		{
 			pos = trucks[id];
