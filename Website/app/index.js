@@ -26,13 +26,7 @@ function read_file()
 function update_locations()
 {
 	
-	//Moved trucks from local to global variable for use in collision function
-	//Clearing markers for next run
-	for (var i = 0; i < gameArea.markers.length; i++ ) {
-	    gameArea.markers[i].setMap(null);
-	}
-	gameArea.markers.length = 0;
-	
+	//Moved trucks from local to global variable for use in collision function	
 	var all_event_strings = allText.split("\n");
 	//console.log(all_event_strings[0]);
 	for (var i = 0; i < all_event_strings.length; ++i) {
