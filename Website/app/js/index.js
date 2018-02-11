@@ -5,7 +5,6 @@ var app = new Vue({
     opponentPokemonSrc: "file:///C:/Users/cobbn/Documents/RPI\ All\ Years/HackTechValley/HackTechValley18/truck_boy/pixel-art-garbage-truck_1959078.gif",
     userPokemon: "stickboii",
     opponentPokemon: "TruCk",
-    active: active,
     startUserHP: 100,
     userHP: 100,
     startOpponentHP: 100,
@@ -24,6 +23,10 @@ var app = new Vue({
   methods:{
     killTruck: function() {
           this.battleText = this.userPokemon + " killed " + this.opponentPokemon
+          setTimeout(function(){  
+            document.getElementById("map").style.display = "block";
+            document.getElementById("app").style.display = "none"; }, 3000);
+                 
     }
   }
   

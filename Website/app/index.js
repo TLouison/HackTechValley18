@@ -7,6 +7,7 @@ var up = false;
 var down = false;
 var current_time = 0;
 var allText;
+var trucks = {};
 
 function read_file()
 {
@@ -25,16 +26,15 @@ function read_file()
 function update_locations()
 {
 	
-	var trucks = {};
-	
+	//Moved trucks from local to global variable for use in collision function	
 	var all_event_strings = allText.split("\n");
-	console.log(all_event_strings[0]);
+	//console.log(all_event_strings[0]);
 	for (var i = 0; i < all_event_strings.length; ++i) {
 		var all_components = all_event_strings[i].split(",");
 		var id = all_components[0];
 		var pos1 = all_components[1];
 		var pos2 =  all_components[2];
-		var pos = {lat: parseFloat(pos1), lng: parseFloat(pos2)}
+		var pos = {lat: parseFloat(pos1),lng: parseFloat(pos2)}
 		var time = all_components[3];
 		var time_int = parseInt(all_components[3].substring(0,2)) *60 + parseInt(all_components[3].substring(3,5));
 		if(time_int<current_time)
@@ -76,6 +76,7 @@ function update_locations()
 			});
 			gameArea.markers[id] = marker;
 		}
+		checkCollide(pos.lat,pos.lng);
 	}
 	current_time+= 40;
 }
@@ -95,10 +96,14 @@ function character(width, height, color, type) {
 	  ctx = gameArea.context;
 
 		if (left || down) {
+
+			//console.log("left image")
 			this.image.src = "../../truck_boy/pixel_boy_walk_left.gif";
 		} else if (right || up) {
+			//console.log("right image")
 			this.image.src = "../../truck_boy/pixel_boy_walk.gif";
 		} else {
+			//console.log("standing")
 			this.image.src = "../../truck_boy/pixel_boy_idle.gif";
 		} 
 		if (type == "image") {
@@ -110,6 +115,24 @@ function character(width, height, color, type) {
 		    ctx.fillStyle = color;
 		    ctx.fillRect(this.x, this.y, this.width, this.height);
 		}
+	}
+}
+
+function distanceCheck(x1,y1,x2,y2){
+	var deltaX = Math.abs(x1-x2);
+	var deltaY = Math.abs(y1-y2);
+	var dist = Math.sqrt(Math.pow(deltaX,2) + Math.pow(deltaY,2));
+	return (dist);
+}
+
+function checkCollide(x,y){
+	var playerPos = map.getCenter().toUrlValue().split(",");
+	playerPos[0] = Number(playerPos[0]);
+	playerPos[1] = Number(playerPos[1]);
+
+	if (distanceCheck(playerPos[0], playerPos[1], x, y) < 0.0015){
+		document.getElementById("map").style.display = "none";
+		document.getElementById("app").style.display = "block";
 	}
 }
 
@@ -128,6 +151,7 @@ function update()
 	if(deltaX != 0 || deltaY != 0)
 		map.panBy(deltaX, deltaY);
 
+	checkCollide();
 	playerCharacter.update();
 }
 
@@ -182,8 +206,8 @@ function initMap()
 				break;
 			case 'ArrowRight':
 				right = true;
-				console.log("right hit active true", active)
-				active = true;
+				//console.log("right hit active true", active)
+				// active = true;
 				break;
 
 		}
@@ -203,7 +227,7 @@ function initMap()
 				break;
 			case 'ArrowRight':
 				right = false;
-				active = false;
+				// active = false;
 				break;
 		}
 	});

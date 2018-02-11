@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
 @import url("https://fonts.googleapis.com/css?family=PT+Sans+Narrow");
-html, body {
+
+html, body{
   height: 100%;
-  background: #3C7ACD;
+  background-color: rgba(0,0,0,0);
 }
 
 body {
-  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -185,7 +185,6 @@ body {
   font-family: "PT Sans Narrow";
   cursor: pointer;
 }
-/*
 .battle-text-bottom-left {
   opacity: 0.95;
   position: absolute;
@@ -220,7 +219,7 @@ body {
   text-align: left;
   font-family: "PT Sans Narrow";
   cursor: pointer;
-}*/
+}
 
 @media all and (max-width: 600px) {
   .battle-scene {
