@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My website</title>
+    <link type="text/css" rel="stylesheet" href="map.css"/>
+    <style>
+            #map {
+                height: 400px;
+                width: 100%;
+             }
+        </style>
+</head>
+<body>
+
+<div id = "main">
+
+	<div id = "map" >
+
+	<script>
+	
+	function initMap() {
+
+		var uluru = {lat: 42.814660, lng:-73.949374};
+		var map = new google.maps.Map(document.getElementById('map'), {
+		    zoom: 15,
+		    center: uluru
+	    });
+
+		console.log('starting')
+		var allText = ""
+		var rawFile = new XMLHttpRequest();
+		rawFile.open("GET","positions.txt",false);
+		rawFile.onreadystatechange = function() {
+			if(rawFile.readyState === 4) {
+				if(rawFile.status === 200 || rawFile.status === 0){
+					allText = rawFile.responseText;
+				}
+			}
+		}
+		rawFile.send(null);
+
+
+		var all_event_strings = allText.split("\n");
+		console.log(all_event_strings[0]);
+		for (var i = 0; i < all_event_strings.length; ++i) {
+			var all_components = all_event_strings[i].split(",");
+			var id = all_components[0];
+			var pos1 = all_components[1];
+			var pos2 =  all_components[2];
+			var time = all_components[3];
+			var pos = {lat: parseFloat(pos1), lng: parseFloat(pos2)}
+			// console.log("made all the attributes");
+			
+			let marker = new google.maps.Marker({
+				//title should be id
+				title: id,
+				subtitle : time,
+				position: pos,
+				map: map
+			});
+
+		}
+		console.log("end");
+	}
+
+
+	</script>
+
+	<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl3pWs1kD4YUBJPmpMFOdeu90EHthzdVY&callback=initMap">
+		</script>
+
+	</div>
+
+</div>
+</body>
+
+</html>
+
+
+
+
