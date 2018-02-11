@@ -6,11 +6,10 @@ var right = false;
 var up = false;
 var down = false;
 var current_time = 0;
+var allText;
 
-
-function update_locations()
+function read_file()
 {
-	var allText = ""
 	var rawFile = new XMLHttpRequest();
 	rawFile.open("GET","positions.txt",false);
 	rawFile.onreadystatechange = function() {
@@ -21,6 +20,10 @@ function update_locations()
 		}
 	}
 	rawFile.send(null);
+}
+
+function update_locations()
+{
 	
 	var trucks = {};
 	
@@ -74,6 +77,7 @@ function update_locations()
 			gameArea.markers[id] = marker;
 		}
 	}
+	current_time+= 40;
 }
 
 function character(width, height, color, type) {
@@ -137,7 +141,7 @@ function initMap()
 	
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: 42.815102, lng: -73.950355},
-		zoom: 15,
+		zoom: 17,
 		disableDefaultUI: true,
 		zoomControl: false,
 		gestureHandling: 'none',
@@ -202,6 +206,6 @@ function initMap()
 				break;
 		}
 	});
-	
-	update_locations();
+	read_file();
+	var timer = setInterval(update_locations, 1000);
 }
