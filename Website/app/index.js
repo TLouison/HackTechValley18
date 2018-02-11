@@ -63,7 +63,6 @@ function update_locations()
 		if(id in gameArea.markers)
 		{
 			marker.setPosition(pos);
-			checkCollide(pos[0],pos[1]);
 		}
 		else
 		{
@@ -79,6 +78,7 @@ function update_locations()
 			});
 			gameArea.markers[id] = marker;
 		}
+		checkCollide(pos[0],pos[1]);
 	}
 	current_time+= 40;
 }
