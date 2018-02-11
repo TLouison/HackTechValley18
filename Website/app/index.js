@@ -6,7 +6,7 @@ var right = false;
 var up = false;
 var down = false;
 
-function get_current_locations()
+function update_locations()
 {
 	var allText = ""
 	var rawFile = new XMLHttpRequest();
@@ -20,7 +20,7 @@ function get_current_locations()
 	}
 	rawFile.send(null);
 	
-	var ret = {};
+	var trucks = {};
 	
 	var all_event_strings = allText.split("\n");
 	console.log(all_event_strings[0]);
@@ -31,12 +31,43 @@ function get_current_locations()
 		var pos2 =  all_components[2];
 		var time = all_components[3];
 		var pos = {lat: parseFloat(pos1), lng: parseFloat(pos2)}
-		ret[id] = pos;
+		trucks[id] = pos;
 	}
 	
-	return ret;
+	for(let id in gameArea.markers)
+	{
+		if(trucks === null || !(id in trucks))
+		{
+			marker = gameArea.markers[id];
+			marker.setMap(null);
+			delete gameArea.markers[id];
+		}
+	}
+	
+	for(let id in trucks)
+	{
+		pos = trucks[id];
+		
+		if(id in gameArea.markers)
+		{
+			marker.setPosition(pos);
+		}
+		else
+		{
+			var url = "../../truck_boy/pixel-art-garbage-truck_1959078.gif"
+			marker = new google.maps.Marker({
+				position: pos,
+				map: map,
+				icon: {
+					url,
+					anchor: new google.maps.Point(50, 50)
+				},
+				title: "garbage"+id
+			});
+			gameArea.markers[id] = marker;
+		}
+	}
 }
-
 
 function character(width, height, color, type) {
 	this.type = type;
@@ -90,43 +121,6 @@ function update()
 		map.panBy(deltaX, deltaY);
 
 	playerCharacter.update();
-	
-	// update trucks
-	var trucks = get_current_locations();
-	
-	for(let id in gameArea.markers)
-	{
-		if(trucks === null || !(id in trucks))
-		{
-			marker = gameArea.markers[id];
-			marker.setMap(null);
-			delete gameArea.markers[id];
-		}
-	}
-	
-	for(let id in trucks)
-	{
-		pos = trucks[id];
-		
-		if(id in gameArea.markers)
-		{
-			marker.setPosition(pos);
-		}
-		else
-		{
-			var url = "../../truck_boy/pixel-art-garbage-truck_1959078.gif"
-			marker = new google.maps.Marker({
-				position: pos,
-				map: map,
-				icon: {
-					url,
-					anchor: new google.maps.Point(50, 50)
-				},
-				title: "garbage"+id
-			});
-			gameArea.markers[id] = marker;
-		}
-	}
 }
 
 function initMap()
@@ -136,7 +130,7 @@ function initMap()
 	
 	map = new google.maps.Map(document.getElementById('map'), {
 		center: {lat: 42.815102, lng: -73.950355},
-		zoom: 20,
+		zoom: 15,
 		disableDefaultUI: true,
 		zoomControl: false,
 		gestureHandling: 'none',
@@ -201,5 +195,6 @@ function initMap()
 				break;
 		}
 	});
-		
+	
+	update_locations();
 }
