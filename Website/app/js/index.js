@@ -25,7 +25,8 @@ var app = new Vue({
           this.battleText = this.userPokemon + " killed " + this.opponentPokemon
           setTimeout(function(){  
             document.getElementById("map").style.display = "block";
-            document.getElementById("app").style.display = "none"; }, 3000);
+            document.getElementById("app").style.display = "none";
+            this.battleText = "What will your boi do?" }, 2000);
                  
     }
   }
