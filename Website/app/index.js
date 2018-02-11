@@ -6,6 +6,41 @@ var right = false;
 var up = false;
 var down = false;
 
+
+function character(width, height, color, type) {
+  this.type = type;
+  if (type == "image") {
+    this.image = new Image();
+    this.image.src = color;
+  }
+  this.width = width;
+  this.height = height;
+  this.x = gameArea.canvas.width / 2;
+  this.y = gameArea.canvas.height / 2;
+
+	if (left || down) {
+		this.image.src = "../../truck_boy/pixel_boy_walk_left.gif";
+	} else if (right || up) {
+		this.image.src = "../../truck_boy/pixel_boy_walk.gif";
+	} else {
+		this.image.src = "../../truck_boy/pixel_boy_idle.gif";
+	} 
+    
+  this.update = function() {
+    ctx = gameArea.context;
+    if (type == "image") {
+      ctx.drawImage(this.image, 
+        this.x, 
+        this.y,
+        this.width, this.height);
+    } else {
+      ctx.fillStyle = color;
+      ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
+
+  }
+}
+
 function update()
 {
 	var deltaX = 0;
@@ -25,6 +60,7 @@ function update()
 
 function initMap()
 {
+	console.log("Start initing the map");
 	var overlay = document.getElementById('overlay');
 	
 	map = new google.maps.Map(document.getElementById('map'), {
@@ -39,6 +75,7 @@ function initMap()
 		rotateControl: true,
 		fullscreenControl: true
 	});
+	console.log("overlay declared as", overlay);
 	
 	gameArea = {
 		canvas : overlay,
@@ -50,10 +87,13 @@ function initMap()
 			this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 		}
 	};
+	console.log("Game Area now is set to", gameArea);
 	
-	playerCharacter = new character(100, 100, "../../truck_boy/truckboy_clickme.gif", "image");
+	playerCharacter = new character(100, 100, "../../truck_boy/pixel_boy_idle.gif", "image");
 	gameArea.start();
 	
+	console.log("character is now set to", playerCharacter);
+
 	document.addEventListener('keydown', (event) => {
 		switch(event.key)
 		{
@@ -90,35 +130,4 @@ function initMap()
 		}
 	});
 		
-}
-
-function character(width, height, color, type) {
-  this.type = type;
-  if (type == "image") {
-    this.image = new Image();
-    this.image.src = color;
-  }
-  this.width = width;
-  this.height = height;
-  this.x = gameArea.canvas.width / 2;
-  this.y = gameArea.canvas.width / 2; 
-  this.update = function() {
-    ctx = gameArea.context;
-    if (type == "image") {
-      ctx.drawImage(this.image, 
-        this.x, 
-        this.y,
-        this.width, this.height);
-    } else {
-      ctx.fillStyle = color;
-      ctx.fillRect(this.x, this.y, this.width, this.height);
-    }
-    if (left || down) {
-		this.image.src = "../../truck_boy/pixel_boy_walk_left.gif";
-    } else if (right || up) {
-    	this.image.src = "../../truck_boy/pixel_boy_walk.gif";
-    } else {
-    	this.image.src = "../../truck_boy/pixel_boy_idle.gif";
-    }
-  }
 }
