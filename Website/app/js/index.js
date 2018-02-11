@@ -26,7 +26,7 @@ var app = new Vue({
           setTimeout(function(){  
             document.getElementById("map").style.display = "block";
             document.getElementById("app").style.display = "none";
-            this.battleText = "What will your boi do?" }, 2000);
+            document.getElementById("app").battleText = "What will your boi do?" }, 2000);
                  
     }
   }
