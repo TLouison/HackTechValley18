@@ -5,6 +5,8 @@ var left = false;
 var right = false;
 var up = false;
 var down = false;
+var current_time = 0;
+
 
 function update_locations()
 {
@@ -29,9 +31,14 @@ function update_locations()
 		var id = all_components[0];
 		var pos1 = all_components[1];
 		var pos2 =  all_components[2];
-		var time = all_components[3];
 		var pos = {lat: parseFloat(pos1), lng: parseFloat(pos2)}
-		trucks[id] = pos;
+		var time = all_components[3];
+		var time_int = parseInt(all_components[3].substring(0,2)) *60 + parseInt(all_components[3].substring(3,5));
+		if(time_int<current_time)
+		{
+			trucks[id] = pos;
+		}
+		
 	}
 	
 	for(let id in gameArea.markers)
