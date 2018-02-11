@@ -15,10 +15,8 @@ function character(width, height, color, type) {
 	}
 	this.width = width;
 	this.height = height;
-	this.x = gameArea.canvas.width / 2;
-	this.y = gameArea.canvas.height / 2;
-
-
+	this.x = (gameArea.canvas.width / 2)-(this.width/2);
+	this.y = (gameArea.canvas.height / 2)-(this.height/2);
     
 	this.update = function() {
 	  ctx = gameArea.context;
