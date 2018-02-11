@@ -62,6 +62,7 @@ function update_locations()
 		if(id in gameArea.markers)
 		{
 			marker.setPosition(pos);
+			checkCollide(pos[0],pos[1]);
 		}
 		else
 		{
@@ -124,14 +125,14 @@ function distanceCheck(x1,y1,x2,y2){
 	return (dist);
 }
 
-function checkCollide(){
+function checkCollide(x,y){
 	var playerPos = map.getCenter().toUrlValue().split(",");
 	playerPos[0] = Number(playerPos[0]);
 	playerPos[1] = Number(playerPos[1]);
 
 	console.log(trucks.length);
 	for (let id in trucks){
-		if (distanceCheck(playerPos[0], playerPos[1], trucks[id][0], trucks[id][1]) < .0015){
+		if (distanceCheck(playerPos[0], playerPos[1], x, y) < .0015){
 			alert("COLLISION");
 		}
 	}
