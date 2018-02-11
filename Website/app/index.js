@@ -6,6 +6,37 @@ var right = false;
 var up = false;
 var down = false;
 
+function get_current_locations()
+{
+	var allText = ""
+	var rawFile = new XMLHttpRequest();
+	rawFile.open("GET","positions.txt",false);
+	rawFile.onreadystatechange = function() {
+		if(rawFile.readyState === 4) {
+			if(rawFile.status === 200 || rawFile.status === 0){
+				allText = rawFile.responseText;
+			}
+		}
+	}
+	rawFile.send(null);
+	
+	var ret = {};
+	
+	var all_event_strings = allText.split("\n");
+	console.log(all_event_strings[0]);
+	for (var i = 0; i < all_event_strings.length; ++i) {
+		var all_components = all_event_strings[i].split(",");
+		var id = all_components[0];
+		var pos1 = all_components[1];
+		var pos2 =  all_components[2];
+		var time = all_components[3];
+		var pos = {lat: parseFloat(pos1), lng: parseFloat(pos2)}
+		ret[id] = pos;
+	}
+	
+	return ret;
+}
+
 
 function character(width, height, color, type) {
 	this.type = type;
@@ -61,6 +92,43 @@ function update()
 		map.panBy(deltaX, deltaY);
 
 	playerCharacter.update();
+	
+	// update trucks
+	var trucks = get_current_locations();
+	
+	for(let id in gameArea.markers)
+	{
+		if(trucks === null || !(id in trucks))
+		{
+			marker = gameArea.markers[id];
+			marker.setMap(null);
+			delete gameArea.markers[id];
+		}
+	}
+	
+	for(let id in trucks)
+	{
+		pos = trucks[id];
+		
+		if(id in gameArea.markers)
+		{
+			marker.setPosition(pos);
+		}
+		else
+		{
+			var url = "../../truck_boy/pixel-art-garbage-truck_1959078.gif"
+			marker = new google.maps.Marker({
+				position: pos,
+				map: map,
+				icon: {
+					url,
+					anchor: new google.maps.Point(50, 50)
+				},
+				title: "garbage"+id
+			});
+			gameArea.markers[id] = marker;
+		}
+	}
 }
 
 function initMap()
@@ -74,7 +142,7 @@ function initMap()
 		disableDefaultUI: true,
 		zoomControl: false,
 		gestureHandling: 'none',
-		mapTypeControl: false,
+		mapTypeControl: false,	
 		scaleControl: false,
 		streetViewControl: true,
 		rotateControl: true,
@@ -90,7 +158,8 @@ function initMap()
 		},
 		clear : function() {
 			this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-		}
+		},
+		markers: []
 	};
 	console.log("Game Area now is set to", gameArea);
 	
