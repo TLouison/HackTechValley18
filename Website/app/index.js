@@ -11,6 +11,7 @@ var trucks = {};
 
 function read_file()
 {
+	alert("alert test");
 	var rawFile = new XMLHttpRequest();
 	rawFile.open("GET","positions.txt",false);
 	rawFile.onreadystatechange = function() {
@@ -132,6 +133,7 @@ function checkCollide(x,y){
 
 	if (distanceCheck(playerPos[0], playerPos[1], x, y) < .0015){
 		alert("COLLISION");
+		console.log("COLLISION");
 	}
 }
 
