@@ -11,7 +11,6 @@ var trucks = {};
 
 function read_file()
 {
-	alert("alert test");
 	var rawFile = new XMLHttpRequest();
 	rawFile.open("GET","positions.txt",false);
 	rawFile.onreadystatechange = function() {
@@ -30,7 +29,7 @@ function update_locations()
 	//Moved trucks from local to global variable for use in collision function
 	
 	var all_event_strings = allText.split("\n");
-	console.log(all_event_strings[0]);
+	//console.log(all_event_strings[0]);
 	for (var i = 0; i < all_event_strings.length; ++i) {
 		var all_components = all_event_strings[i].split(",");
 		var id = all_components[0];
@@ -78,7 +77,6 @@ function update_locations()
 			});
 			gameArea.markers[id] = marker;
 		}
-		console.log(pos.lat,pos.lng);
 		checkCollide(pos.lat,pos.lng);
 	}
 	current_time+= 40;
@@ -133,8 +131,7 @@ function checkCollide(x,y){
 	playerPos[1] = Number(playerPos[1]);
 
 	console.log(playerPos[0], playerPos[1], x, y);
-	if (distanceCheck(playerPos[0], playerPos[1], x, y) < 0.0015){
-		alert("COLLISION");
+	if (distanceCheck(playerPos[0], playerPos[1], x, y) < 0.0005){
 		console.log("COLLISION");
 	}
 }
