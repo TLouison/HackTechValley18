@@ -97,13 +97,13 @@ function character(width, height, color, type) {
 	  ctx = gameArea.context;
 
 		if (left || down) {
-			console.log("left image")
+			//console.log("left image")
 			this.image.src = "../../truck_boy/pixel_boy_walk_left.gif";
 		} else if (right || up) {
-			console.log("right image")
+			//console.log("right image")
 			this.image.src = "../../truck_boy/pixel_boy_walk.gif";
 		} else {
-			console.log("standing")
+			//console.log("standing")
 			this.image.src = "../../truck_boy/pixel_boy_idle.gif";
 		} 
 		if (type == "image") {
@@ -130,8 +130,7 @@ function checkCollide(x,y){
 	playerPos[0] = Number(playerPos[0]);
 	playerPos[1] = Number(playerPos[1]);
 
-	console.log(playerPos[0], playerPos[1], x, y);
-	if (distanceCheck(playerPos[0], playerPos[1], x, y) < 0.0005){
+	if (distanceCheck(playerPos[0], playerPos[1], x, y) < 0.0015){
 		console.log("COLLISION");
 	}
 }
