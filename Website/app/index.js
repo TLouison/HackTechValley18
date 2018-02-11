@@ -186,6 +186,9 @@ function initMap()
 			case 'ArrowRight':
 				right = true;
 				break;
+			case 'Space':
+				active = true;
+
 		}
 	});
 	
@@ -204,6 +207,8 @@ function initMap()
 			case 'ArrowRight':
 				right = false;
 				break;
+			case 'Space':
+				active = true;
 		}
 	});
 	read_file();

@@ -15,20 +15,6 @@
   
 </head>
 
-  <style>
-
-    #map {
-      height: 100%;
-      width: 100%;
-    }
-    
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-  </style>
-
 <body>
 
   <body>
@@ -39,7 +25,7 @@
    <div class="box-top-left">
      <h2 class="pokemon">{{opponentPokemon}}</h2>
      <div class="hp-bar-top">
-       <div class="hp-bar-fill"></div>
+       <div v-bind:style="opponentHpBar" class="hp-bar-fill"></div>
      </div>
      <h4 class="level">Lvl. {{opponentLevel}}</h4>
    </div>
@@ -52,18 +38,18 @@
    <div class="box-bottom-right">
       <h2 class="pokemon">{{userPokemon}}</h2>
      <div class="hp-bar-bottom">
-       <div class="hp-bar-fill"></div>
+       <div v-bind:style="userHpBar" class="hp-bar-fill"></div>
      </div>
      <h4 class="level">Lvl. {{userLevel}}</h4>
-     <h4 class="hp">{{userHP}}/{{userHP}}</h4>
+     <h4 class="hp">{{userHP}}/{{startUserHP}}</h4>
    </div>
    <div class="bottom-menu">
      <div class="battle-text text-box-left">{{battleText}}</div>
        <div class="text-box-right">
- <!--         <h4 class="battle-text-top-left"></h4>
-         <h4 class="battle-text-bottom-left"></h4>
+         <h4 v-on:click="processOption(1)" class="battle-text-top-left">{{optionText}}</h4>
+       <!--   <h4 class="battle-text-bottom-left"></h4>
          <h4 class="battle-text-top-right"></h4>
-         <h4 class="battle-text-bottom-right"></h4>  -->  
+         <h4 class="battle-text-bottom-right"></h4>    -->
      </div>
    </div>
    

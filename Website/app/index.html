@@ -5,9 +5,23 @@
 		<!-- API KEY: AIzaSyBl3pWs1kD4YUBJPmpMFOdeu90EHthzdVY -->
 			
 		<script src="index.js"></script>
+		<script type='text/javascript' > 
+	  		var active = false; 
+		</script>
 		<script async defer
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBl3pWs1kD4YUBJPmpMFOdeu90EHthzdVY&callback=initMap">
 		</script>
+
+		<meta charset="UTF-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+  
+  		<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+      	<link rel="stylesheet" href="css/style.css">
+
+ 
 	</head>
 	
 	<style>
@@ -31,9 +45,54 @@
 		}
 	</style>
     
+  <body>
     <body>
-		<div id="map"></div>
+
+		<div v-if="active" id="map"></div>
 		<canvas id="overlay"></canvas>
+
+		 <div id="app">
+		 <!-- Begin battle scene -->
+		 <div class="battle-scene">
+		   <div class="box-top-left">
+		     <h2 class="pokemon">{{opponentPokemon}}</h2>
+		     <div class="hp-bar-top">
+		       <div v-bind:style="opponentHpBar" class="hp-bar-fill"></div>
+		     </div>
+		     <h4 class="level">Lvl. {{opponentLevel}}</h4>
+		   </div>
+		   <div class="box-top-right">
+		     <img  v-bind:src="opponentPokemonSrc" class="pokemon-top" />
+		   </div>
+		    <div class="box-bottom-left">
+		      <img v-bind:src="userPokemonSrc" class="pokemon-bottom" />
+		   </div>
+		   <div class="box-bottom-right">
+		      <h2 class="pokemon">{{userPokemon}}</h2>
+		     <div class="hp-bar-bottom">
+		       <div v-bind:style="userHpBar" class="hp-bar-fill"></div>
+		     </div>
+		     <h4 class="level">Lvl. {{userLevel}}</h4>
+		     <h4 class="hp">{{userHP}}/{{startUserHP}}</h4>
+		   </div>
+		   <div class="bottom-menu">
+		     <div class="battle-text text-box-left">{{battleText}}</div>
+		       <div class="text-box-right">
+		         <h4 v-on:click="killTruck()" class="battle-text-top-left">{{optionText}}</h4>
+		       <!--   <h4 class="battle-text-bottom-left"></h4>
+		         <h4 class="battle-text-top-right"></h4>
+		         <h4 class="battle-text-bottom-right"></h4>    -->
+		     </div>
+		   </div>
+		   
+		 
+		 </div> 
+		  <!-- end battle scene -->
+		 </div>
+
+		 <script  src="js/index.js"></script>
     </body>
+
+</body>
 
 </html>

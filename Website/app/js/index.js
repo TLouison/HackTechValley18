@@ -20,6 +20,7 @@ var app = new Vue({
   		width: "100%"
   	},
   },
+  active: false,
   methods:{
     killTruck: function() {
     	setTimeout(() => {
