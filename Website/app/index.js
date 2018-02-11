@@ -46,33 +46,31 @@ function character(width, height, color, type) {
 	}
 	this.width = width;
 	this.height = height;
-	this.x = gameArea.canvas.width / 2;
-	this.y = gameArea.canvas.height / 2;
-
-
+	this.x = (gameArea.canvas.width / 2)-(this.width/2);
+	this.y = (gameArea.canvas.height / 2)-(this.height/2);
     
 	this.update = function() {
 	  ctx = gameArea.context;
 
-	if (left || down) {
-		console.log("left image")
-		this.image.src = "../../truck_boy/pixel_boy_walk_left.gif";
-	} else if (right || up) {
-		console.log("right image")
-		this.image.src = "../../truck_boy/pixel_boy_walk.gif";
-	} else {
-		console.log("standing")
-		this.image.src = "../../truck_boy/pixel_boy_idle.gif";
-	} 
-	  if (type == "image") {
-	    ctx.drawImage(this.image, 
-	      this.x, 
-	      this.y,
-	      this.width, this.height);
-	  } else {
-	    ctx.fillStyle = color;
-	    ctx.fillRect(this.x, this.y, this.width, this.height);
-	  }
+		if (left || down) {
+			console.log("left image")
+			this.image.src = "../../truck_boy/pixel_boy_walk_left.gif";
+		} else if (right || up) {
+			console.log("right image")
+			this.image.src = "../../truck_boy/pixel_boy_walk.gif";
+		} else {
+			console.log("standing")
+			this.image.src = "../../truck_boy/pixel_boy_idle.gif";
+		} 
+		if (type == "image") {
+		    ctx.drawImage(this.image, 
+		      this.x, 
+		      this.y,
+		      this.width, this.height);
+		} else {
+		    ctx.fillStyle = color;
+		    ctx.fillRect(this.x, this.y, this.width, this.height);
+		}
 	}
 }
 
@@ -163,7 +161,7 @@ function initMap()
 	};
 	console.log("Game Area now is set to", gameArea);
 	
-	playerCharacter = new character(100, 100, "../../truck_boy/pixel_boy_idle.gif", "image");
+	playerCharacter = new character(27, 35, "../../truck_boy/pixel_boy_idle.gif", "image");
 	gameArea.start();
 	
 	console.log("character is now set to", playerCharacter);

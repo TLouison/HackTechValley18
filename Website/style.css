@@ -1,24 +1,48 @@
-*{
-  margin: 0;
-  padding: 0;
-}
-
 @font-face {
     font-family: 'pix PixelFJVerdana12pt';
-    src: url('pixPixelFJVerdana12pt.woff2') format('woff2'),
-        url('pixPixelFJVerdana12pt.woff') format('woff');
+    src: url('fonts/pixPixelFJVerdana12pt.woff2') format('woff2'),
+        url('fonts/pixPixelFJVerdana12pt.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
+*{
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+body{
+  height: 100%;
+  margin: 0 !important;
+}
+
 html{
   background-color: rgb(75,171,95);
-  margin: 0px;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+
+}
+
+footer{
+  width:100%;
+  text-align: center;
+  vertical-align: middle;
+  background-color: rgb(45, 141, 55);
+  position: static;
+  bottom: 0;
+  height: 5%;
+}
+
+.full{
+  height: 100%;
 }
 
 .header {
   position: relative;
   background-color: rgb(29,115,78);
+  font-family: sans-serif;
   text-align: center;
   font-size: 48px;
   width: 100%;
@@ -65,13 +89,9 @@ html{
 a:active, a:focus {
   outline: 0;
   border: none;
-  -moz-outline-style: none
+  -moz-outline-style: none;
 }
 
-marquee{
-  margin-top: 0;
-  padding-top: 0;
-}
 
 .road{
     background-image: url("road.png");
@@ -110,6 +130,45 @@ p{
 }
 
 .content{
+  padding: 5em;
   text-align: center;
-  margin: 4em;
+  vertical-align: middle;
+}
+
+.container{
+  height: 25%;
+  justify-content: center;
+  align-content: center;
+  vertical-align: middle;
+}
+
+.loadsplash{
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  vertical-align: middle;
+  margin: auto;
+  position: relative;
+}
+
+.wrapper{
+  text-align: center;
+}
+
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
 }
