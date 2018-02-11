@@ -78,6 +78,7 @@ function update_locations()
 			});
 			gameArea.markers[id] = marker;
 		}
+		console.log(pos[0], pos[1]);
 		checkCollide(pos[0],pos[1]);
 	}
 	current_time+= 40;
